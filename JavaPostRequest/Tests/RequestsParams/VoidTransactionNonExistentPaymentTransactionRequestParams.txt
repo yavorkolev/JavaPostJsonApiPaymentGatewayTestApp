@@ -1,0 +1,4 @@
+http://localhost:3001
+/payment_transactions
+Basic Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==
+{"payment_transaction":{"reference_id":"694032ed8dd936c0161fe8132e451d0f","transaction_type":"void"}}

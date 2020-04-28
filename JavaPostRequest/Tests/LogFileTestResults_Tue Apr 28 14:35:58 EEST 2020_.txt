@@ -1,0 +1,59 @@
+Test files: 5 [ValidPaymentTransactionInvalidAuthenticationRequestParams.txt, ValidVoidTransactionRequestParams.txt, ValidPaymentTransactionRequestParams.txt, VoidTransactionNonExistentPaymentTransactionRequestParams.txt, VoidTransactionToAnExistentVoidTransactionRequestParams.txt]
+---------------------------------
+Test-1 file: ValidPaymentTransactionInvalidAuthenticationRequestParams.txt STARTED
+Root API endpoint(param-1): http://localhost:3001
+Transaction type(param-2): /payment_transactions
+Authorization (param-3): Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==
+Transaction body(param-3): {"payment_transaction":{"card_number":"4200000000000000","cvv":"123","expiration_date":"06/2019","amount":"500","usage":"Coffeemaker","transaction_type":"sale","card_holder":"Panda Panda","email":"panda@example.com","address":"Panda Street, China"}}
+Transaction Status Codes is: 401
+Transaction response Row-1 is: HTTP Basic: Access denied.
+Transaction: NOT APPROVED
+Test-1 file: ValidPaymentTransactionInvalidAuthenticationRequestParams.txt FINISHED
+---------------------------------
+---------------------------------
+Test-2 file: ValidVoidTransactionRequestParams.txt STARTED
+Root API endpoint(param-1): http://localhost:3001
+Transaction type(param-2): /payment_transactions
+Authorization (param-3): Basic Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==
+Transaction body(param-3): {"payment_transaction":{"reference_id":"5b88ef97c1de89898f88475437b3e02f","transaction_type":"void"}}
+Transaction Status Codes is: 200
+Transaction response Row-1 is: {"unique_id":"416c51850c7201c72c74113549bc3be5","status":"approved","usage":"Coffeemaker","amount":500,"transaction_time":"2020-04-28T11:36:02.021Z","message":"Your transaction has been voided successfully"}
+Transaction: APPROVED
+Test-2 file: ValidVoidTransactionRequestParams.txt FINISHED
+---------------------------------
+---------------------------------
+Test-3 file: ValidPaymentTransactionRequestParams.txt STARTED
+Root API endpoint(param-1): http://localhost:3001
+Transaction type(param-2): /payment_transactions
+Authorization (param-3): Basic Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==
+Transaction body(param-3): {"payment_transaction":{"card_number":"4200000000000000","cvv":"123","expiration_date":"06/2019","amount":"500","usage":"Coffeemaker","transaction_type":"sale","card_holder":"Panda Panda","email":"panda@example.com","address":"Panda Street, China"}}
+Transaction Status Codes is: 200
+Transaction response Row-1 is: {"unique_id":"7672587f1e1bd291109f02f37e5867ca","status":"approved","usage":"Coffeemaker","amount":500,"transaction_time":"2020-04-28T11:36:05.050Z","message":"Your transaction has been approved."}
+Transaction: APPROVED
+Test-3 file: ValidPaymentTransactionRequestParams.txt FINISHED
+---------------------------------
+---------------------------------
+Test-4 file: VoidTransactionNonExistentPaymentTransactionRequestParams.txt STARTED
+Root API endpoint(param-1): http://localhost:3001
+Transaction type(param-2): /payment_transactions
+Authorization (param-3): Basic Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==
+Transaction body(param-3): {"payment_transaction":{"reference_id":"694032ed8dd936c0161fe8132e451d0f","transaction_type":"void"}}
+Transaction Status Codes is: 422
+Transaction response Row-1 is: {"reference_id":["Invalid reference transaction!"]}
+Transaction: NOT APPROVED
+Test-4 file: VoidTransactionNonExistentPaymentTransactionRequestParams.txt FINISHED
+---------------------------------
+---------------------------------
+Test-5 file: VoidTransactionToAnExistentVoidTransactionRequestParams.txt STARTED
+Root API endpoint(param-1): http://localhost:3001
+Transaction type(param-2): /payment_transactions
+Authorization (param-3): Basic Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==
+Transaction body(param-3): {"payment_transaction":{"reference_id":"694032ed8dd936c0161fe8132e451d0f","transaction_type":"void"}}
+Transaction Status Codes is: 422
+Transaction response Row-1 is: {"reference_id":["Invalid reference transaction!"]}
+Transaction: NOT APPROVED
+Test-5 file: VoidTransactionToAnExistentVoidTransactionRequestParams.txt FINISHED
+---------------------------------
+==================================
+===Sanity check app finished all tests===
+===Sanity check app is CLOSED===

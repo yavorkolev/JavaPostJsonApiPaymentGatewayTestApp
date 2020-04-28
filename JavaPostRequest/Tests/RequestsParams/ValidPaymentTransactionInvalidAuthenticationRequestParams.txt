@@ -1,0 +1,4 @@
+http://localhost:3001
+/payment_transactions
+Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==
+{"payment_transaction":{"card_number":"4200000000000000","cvv":"123","expiration_date":"06/2019","amount":"500","usage":"Coffeemaker","transaction_type":"sale","card_holder":"Panda Panda","email":"panda@example.com","address":"Panda Street, China"}}
